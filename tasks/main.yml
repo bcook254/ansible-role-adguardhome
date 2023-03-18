@@ -1,0 +1,13 @@
+---
+- name: Install
+  ansible.builtin.include_tasks: install.yml
+
+- name: Configure
+  ansible.builtin.include_tasks: configure.yml
+  when: adguardhome_manage_config
+
+- name: Ensure AdGuardHome is started and enabled on boot.
+  ansible.builtin.service:
+    name: "{{ adguardhome_daemon }}"
+    state: started
+    enabled: true

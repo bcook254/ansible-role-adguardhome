@@ -1,0 +1,50 @@
+---
+- name: Ensure adguardhome group exists.
+  ansible.builtin.group:
+    name: "{{ adguardhome_group }}"
+    state: present
+    system: true
+
+- name: Ensure adguardhome user exists.
+  ansible.builtin.user:
+    name: "{{ adguardhome_user }}"
+    group: "{{ adguardhome_group }}"
+    home: "{{ adguardhome_home_dir }}"
+    shell: /usr/sbin/nologin
+    system: true
+
+- name: Check if AdGuardHome is already installed.
+  ansible.builtin.command:
+    cmd: "{{ adguardhome_bin_dir }}/AdGuardHome --version"
+  register: __adguardhome_version_result
+  ignore_errors: true
+  changed_when: false
+
+- name: Install AdGuardHome.
+  ansible.builtin.unarchive:
+    src: "https://github.com/AdguardTeam/AdGuardHome/releases/download/v{{ adguardhome_version }}/AdGuardHome_linux_amd64.tar.gz"  # yamllint disable-line rule:line-length
+    dest: /usr/local/bin/
+    remote_src: true
+    include:
+      - ./AdGuardHome/AdGuardHome
+    extra_opts:
+      - --strip-components=2
+    mode: 0755
+  when: __adguardhome_version_result is failed
+        or __adguardhome_version_result.stdout is not search(adguardhome_version)
+
+- name: Ensure AdGuardHome data directory exists.
+  ansible.builtin.file:
+    path: "{{ adguardhome_data_dir }}"
+    owner: "{{ adguardhome_user }}"
+    group: "{{ adguardhome_group }}"
+    state: directory
+    mode: 0700
+
+- name: Ensure AdGuardHome config directory exists.
+  ansible.builtin.file:
+    path: "{{ adguardhome_config_dir }}"
+    owner: "{{ adguardhome_user }}"
+    group: "{{ adguardhome_group }}"
+    state: directory
+    mode: 0755

@@ -1,0 +1,26 @@
+---
+- name: Verify
+  hosts: all
+  gather_facts: false
+
+  tasks:
+  - name: Check if AdGuardHome is installed.
+    ansible.builtin.stat:
+      path: /usr/local/bin/AdGuardHome
+
+  - name: Verify correct version of AdGuardHome has been installed.
+    ansible.builtin.command: AdGuardHome --version
+    args:
+      chdir: /usr/local/bin
+    changed_when: false
+    register: __adguardhome_version
+    failed_when: __adguardhome_version is not search('0.107.26')
+
+  - name: Check if adguardhome.service is started
+    ansible.builtin.service:
+      name: adguardhome
+      state: started
+      enabled: true
+    check_mode: true
+    register: service
+    failed_when: (service is changed) or (service is failed)

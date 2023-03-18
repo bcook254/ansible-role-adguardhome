@@ -1,0 +1,151 @@
+---
+adguardhome_version: 0.107.26
+adguardhome_user: adguardhome
+adguardhome_group: adguardhome
+adguardhome_daemon: adguardhome
+adguardhome_home_dir: /var/lib/adguardhome
+adguardhome_data_dir: "{{ adguardhome_home_dir }}"
+adguardhome_bin_dir: /usr/local/bin
+adguardhome_config_dir: /etc/adguardhome
+
+adguardhome_manage_config: true
+
+adguardhome_webhost: '127.0.0.1'
+adguardhome_webport: '80'
+adguardhome_users: []
+adguardhome_auth_attempts: 5
+adguardhome_block_auth_min: 15
+adguardhome_http_proxy: '""'
+adguardhome_language: '""'
+adguardhome_debug_pprof: 'false'
+adguardhome_web_session_ttl: 720
+adguardhome_dnshosts:
+  - 127.0.0.1
+adguardhome_dnsport: 53
+adguardhome_statistics_enabled: 'true'  # Added in 0.107.24
+adguardhome_statistics_interval: 1
+adguardhome_statistics_ignored: []  # Added in 0.107.24
+adguardhome_querylog_enabled: 'true'
+adguardhome_querylog_file_enabled: 'true'
+adguardhome_querylog_interval: '2160h'
+adguardhome_querylog_size_memory: 1000
+adguardhome_querylog_ignored: []  # Added in 0.107.24
+adguardhome_anonymize_client_ip: 'false'
+adguardhome_protection_enabled: 'true'
+adguardhome_blocking_mode: 'default'
+adguardhome_blockingipv4: '""'
+adguardhome_blockingpiv6: '""'
+adguardhome_blocked_response_ttl: 10
+adguardhome_parental_block_host: 'family-block.dns.adguard.com'
+adguardhome_safebrowsing_block_host: 'standard-block.dns.adguard.com'
+adguardhome_ratelimit: 20
+adguardhome_ratelimit_whitelist: []
+adguardhome_refuse_any: 'true'
+adguardhome_upstream_dns:
+  - 'https://dns10.quad9.net/dns-query'
+adguardhome_upstream_dns_file: '""'
+adguardhome_bootstrap_dns:
+  - '9.9.9.10'
+  - '149.112.112.0'
+  - '2620:fe::10'
+  - '2620:fe::fe:10'
+adguardhome_all_servers: 'false'
+adguardhome_fastest_addr: 'false'
+adguardhome_fastest_timeout: '1s'
+adguardhome_allowed_clients: []
+adguardhome_disallowed_clients: []
+adguardhome_blocked_hosts:
+  - 'version.bind'
+  - 'id.server'
+  - 'hostname.bind'
+adguardhome_trusted_proxies:
+  - 127.0.0.1/8
+  - '::1/128'
+adguardhome_cache_size: 4194304
+adguardhome_cache_ttl_min: 0
+adguardhome_cache_ttl_max: 0
+adguardhome_cache_optimistic: 'false'
+adguardhome_bogus_nxdomain: []
+adguardhome_aaaa_disabled: 'false'
+adguardhome_enable_dnssec: 'false'
+adguardhome_edns_client_subnet: 'false'
+adguardhome_max_goroutines: 300
+adguardhome_ipset: []
+adguardhome_filtering_enabled: 'true'
+adguardhome_filters_update_interval: 24
+adguardhome_parental_enabled: 'false'
+adguardhome_safesearch_enabled: 'false'
+adguardhome_safebrowsing_enabled: 'false'
+adguardhome_safebrowsing_cache_size: 1048576
+adguardhome_safeseach_cache_size: 1048576
+adguardhome_parental_cache_size: 1048576
+adguardhome_cache_time: 30
+adguardhome_rewrites: []
+adguardhome_blocked_services: []
+adguardhome_upstream_timeout: '10s'
+adguardhome_local_domain_name: 'lan'
+adguardhome_resolve_clients: 'true'
+adguardhome_use_private_ptr_resolvers: 'true'
+adguardhome_local_ptr_upstreams: []
+adguardhome_tls_enabled: 'false'
+adguardhome_tls_server_name: '""'
+adguardhome_tls_force_https: 'false'
+adguardhome_tls_port_https: 443
+adguardhome_tls_port_dns_over_tls: 853
+adguardhome_tls_port_dns_over_quic: 853
+adguardhome_tls_port_dnscrypt: 0
+adguardhome_tls_dnscrypt_config_file: '""'
+adguardhome_tls_allow_enencrypted_doh: 'false'
+adguardhome_tls_sctrict_sni_check: 'false'
+adguardhome_tls_certificate_chain: '""'
+adguardhome_tls_private_key: '""'
+adguardhome_tls_certificate_path: '""'
+adguardhome_tls_private_key_path: '""'
+adguardhome_filters:
+  - enabled: 'true'
+    url: 'https://adguardteam.github.io/AdGuardSDNSFilter/Filters/filter.txt'
+    name: 'AdGuard DNS filter'
+  - enabled: 'true'
+    url: 'https://adaway.org/hosts.txt'
+    name: 'AdAway Default Blocklist'
+adguardhome_whitelist_filters: []
+adguardhome_user_rules: []
+adguardhome_dhcp_enabled: 'false'
+adguardhome_dhcp_interface_name: '""'
+adguardhome_dhcp_gateway_ip: '""'
+adguardhome_dhcp_subnet_mask: '""'
+adguardhome_dhcp_range_start: '""'
+adguardhome_dhcp_range_end: '""'
+adguardhome_dhcp_lease_duration: 86400
+adguardhome_dhcp_icmp_timeout_msec: 1000
+adguardhome_dhcp_options: []
+adguardhome_dhcp6_range_start: '""'
+adguardhome_dhcp6_lease_duration: 86400
+adguardhome_dhcp6_slaac_only: 'false'
+adguardhome_dhcp6_allow_slaac: 'false'
+adguardhome_clients: []
+adguardhome_runtime_sources_whois: 'true'
+adguardhome_runtime_sources_arp: 'true'
+adguardhome_runtime_sources_rdns: 'true'
+adguardhome_runtime_sources_dhcp: 'true'
+adguardhome_runtime_sources_hosts: 'true'
+adguardhome_log_compress: 'false'
+adguardhome_log_localtime: 'false'
+adguardhome_log_max_backups: 0
+adguardhome_log_max_size: 100
+adguardhome_log_max_age: 3
+adguardhome_log_file: '""'
+adguardhome_verbose: 'false'
+adguardhome_os_group: '""'
+adguardhome_os_user: '""'
+adguardhome_rlimit_nofile: 0
+adguardhome_private_networks: []  # Added in 0.107.7
+adguardhome_handle_ddr: 'true'  # Added in 0.107.10
+adguardhome_ipset_file: '""'  # Added in 0.107.13
+adguardhome_serve_http3: 'false'  # Added in 0.107.15
+adguardhome_use_http3_upstreams: 'false'  # Added in 0.107.15
+adguardhome_theme: 'auto'  # Added in 0.107.22
+adguardhome_use_dns64: 'false'  # Added in 0.107.23
+adguardhome_dns64_prefixes: []  # Added in 0.107.23
+adguardhome_edns_client_subnet_custom_ip: '""'  # Added in 0.107.26
+adguardhome_edns_client_subnet_use_custom: 'false'  # Added in 0.107.26

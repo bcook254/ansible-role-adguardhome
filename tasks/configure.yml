@@ -1,0 +1,29 @@
+---
+# Check for changes in config
+- name: Copy config file.
+  ansible.builtin.template:
+    src: AdGuardHome-{{ adguardhome_template_version }}.yaml.j2
+    dest: "{{ adguardhome_config_dir }}/AdGuardhome.yaml"
+    owner: "{{ adguardhome_user }}"
+    group: "{{ adguardhome_group }}"
+    mode: 0600
+  check_mode: true
+  register: __config_file_changes
+
+# Stop service as AdGuardHome overwrites changes when stopped
+- name: Stop AdGuardHome.
+  ansible.builtin.service:
+    name: "{{ adguardhome_daemon }}"
+    state: stopped
+  when: __config_file_changes is changed  # noqa: no-handler
+
+# Apply changes only if there are changes
+- name: Copy config file.
+  ansible.builtin.template:
+    src: AdGuardHome-{{ adguardhome_template_version }}.yaml.j2
+    dest: "{{ adguardhome_config_dir }}/AdGuardhome.yaml"
+    owner: "{{ adguardhome_user }}"
+    group: "{{ adguardhome_group }}"
+    mode: 0600
+  when: __config_file_changes is changed  # noqa: no-handler
+  notify: restart adguardhome
