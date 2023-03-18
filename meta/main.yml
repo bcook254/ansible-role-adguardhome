@@ -24,7 +24,7 @@ galaxy_info:
       versions:
         - buster
         - bullseye
-    - name:
+    - name: Ubuntu
       versions:
         - bionic
         - focal
