@@ -1,12 +1,12 @@
 ---
 # Check for changes in config
-- name: Copy config file.
+- name: Check config file for changes.
   ansible.builtin.template:
     src: AdGuardHome-{{ adguardhome_template_version }}.yaml.j2
-    dest: "{{ adguardhome_config_dir }}/AdGuardhome.yaml"
+    dest: "{{ adguardhome_config_dir }}/AdGuardHome.yaml"
     owner: "{{ adguardhome_user }}"
     group: "{{ adguardhome_group }}"
-    mode: 0600
+    mode: 0644
   check_mode: true
   register: __config_file_changes
 
@@ -21,9 +21,10 @@
 - name: Copy config file.
   ansible.builtin.template:
     src: AdGuardHome-{{ adguardhome_template_version }}.yaml.j2
-    dest: "{{ adguardhome_config_dir }}/AdGuardhome.yaml"
+    dest: "{{ adguardhome_config_dir }}/AdGuardHome.yaml"
     owner: "{{ adguardhome_user }}"
     group: "{{ adguardhome_group }}"
-    mode: 0600
+    mode: 0644
+    backup: true
   when: __config_file_changes is changed  # noqa: no-handler
   notify: restart adguardhome

@@ -1,3 +1,4 @@
+{# TODO Indentations #}
 bind_host: {{ adguardhome_webhost }}
 bind_port: {{ adguardhome_webport }}
 beta_bind_port: 0
@@ -6,8 +7,8 @@ users:{% if adguardhome_users|length <= 0 %}
 {% else %}
 
 {% for adguardhome_user in adguardhome_users %}
-- name: {{ adguardhome_user.username }}
-  password: {% if adguardhome_user.hashed_password is defined %}
+  - name: {{ adguardhome_user.username }}
+    password: {% if adguardhome_user.hashed_password is defined %}
 {{ adguardhome_user.hashed_password }}
 {% else %}
 {{ adguardhome_user.password | password_hash('bcrypt') }}
@@ -26,7 +27,7 @@ dns:
 {% else %}
 
 {% for adguardhome_dnshost in adguardhome_dnshosts %}
-  - {{ adguardhome_dnshost }}
+    - {{ adguardhome_dnshost }}
 {% endfor %}
 {% endif %}
   port: {{ adguardhome_dnsport }}
@@ -49,7 +50,7 @@ dns:
 {% else %}
 
 {% for address in ratelimit_whitelist %}
-  - {{ address }}
+    - {{ address }}
 {% endfor %}
 {% endif %}
   refuse_any: {{ adguardhome_refuse_any }}
@@ -58,7 +59,7 @@ dns:
 {% else %}
 
 {% for address in adguardhome_upstream_dns %}
-  - {{ address }}
+    - {{ address }}
 {% endfor %}
 {% endif %}
   upstream_dns_file: {{ adguardhome_upstream_dns_file }}
@@ -67,7 +68,7 @@ dns:
 {% else %}
 
 {% for address in adguardhome_bootstrap_dns %}
-  - {{ address }}
+    - {{ address }}
 {% endfor %}
 {% endif %}
   all_servers: {{ adguardhome_all_servers }}
@@ -78,7 +79,7 @@ dns:
 {% else %}
 
 {% for address in adguardhome_allowed_clients %}
-  - {{ address }}
+    - {{ address }}
 {% endfor %}
 {% endif %}
   disallowed_clients:{% if adguardhome_disallowed_clients|length <= 0 %}
@@ -86,7 +87,7 @@ dns:
 {% else %}
 
 {% for address in adguardhome_disallowed_clients %}
-  - {{ address }}
+    - {{ address }}
 {% endfor %}
 {% endif %}
   blocked_hosts:{% if adguardhome_blocked_hosts|length <= 0 %}
@@ -94,7 +95,7 @@ dns:
 {% else %}
 
 {% for address in adguardhome_blocked_hosts %}
-  - {{ address }}
+    - {{ address }}
 {% endfor %}
 {% endif %}
   trusted_proxies:{% if adguardhome_trusted_proxies|length <= 0 %}
@@ -102,7 +103,7 @@ dns:
 {% else %}
 
 {% for address in adguardhome_trusted_proxies %}
-  - {{ address }}
+    - {{ address }}
 {% endfor %}
 {% endif %}
   cache_size: {{ adguardhome_cache_size}}
@@ -114,7 +115,7 @@ dns:
 {% else %}
 
 {% for address in adguardhome_bogus_nxdomain %}
-  - {{ address }}
+    - {{ address }}
 {% endfor %}
 {% endif %}
   aaaa_disabled: {{ adguardhome_aaaa_disabled}}
@@ -127,7 +128,7 @@ dns:
 {% else %}
 
 {% for address in adguardhome_ipset %}
-  - {{ address }}
+    - {{ address }}
 {% endfor %}
 {% endif %}
   filtering_enabled: {{ adguardhome_filtering_enabled }}
@@ -144,8 +145,8 @@ dns:
 {% else %}
 
 {% for rewrite in adguardhome_rewrites %}
-  - domain: {{ rewrite.domain }}
-    answer: {{ rewrite.answer }}
+    - domain: {{ rewrite.domain }}
+      answer: {{ rewrite.answer }}
 {% endfor %}
 {% endif %}
   blocked_services:{% if adguardhome_blocked_services|length <= 0 %}
@@ -153,7 +154,7 @@ dns:
 {% else %}
 
 {% for service in adguardhome_blocked_services %}
-  - {{ service }}
+    - {{ service }}
 {% endfor %}
 {% endif %}
   upstream_timeout: {{ adguardhome_upstream_timeout }}
@@ -162,7 +163,7 @@ dns:
 {% else %}
 
 {% for address in adguardhome_private_networks %}
-  - {{ address }}
+    - {{ address }}
 {% endfor %}
 {% endif %}
   use_private_ptr_resolvers: {{ adguardhome_use_private_ptr_resolvers }}
@@ -171,7 +172,7 @@ dns:
 {% else %}
 
 {% for address in adguardhome_local_ptr_upstreams %}
-  - {{ address }}
+    - {{ address }}
 {% endfor %}
 {% endif %}
 tls:
@@ -194,10 +195,10 @@ filters:{% if adguardhome_filters|length <= 0 %}
 {% else %}
 
 {% for adguardhome_filter in adguardhome_filters %}
-- enabled: {{ adguardhome_filter.enabled }}
-  url: {{ adguardhome_filter.url }}
-  name: {{ adguardhome_filter.name }}
-  id: {{ loop.index }}
+  - enabled: {{ adguardhome_filter.enabled }}
+    url: {{ adguardhome_filter.url }}
+    name: {{ adguardhome_filter.name }}
+    id: {{ loop.index }}
 {% endfor %}
 {% endif %}
 whitelist_filters:{% if adguardhome_whitelist_filters|length <= 0 %}
@@ -205,10 +206,10 @@ whitelist_filters:{% if adguardhome_whitelist_filters|length <= 0 %}
 {% else %}
 
 {% for adguardhome_whitelist_filter in adguardhome_whitelist_filters %}
-- enabled: {{ adguardhome_whitelist_filter.enabled }}
-  url: {{ adguardhome_whitelist_filter.url }}
-  name: {{ adguardhome_whitelist_filter.name }}
-  id: {{ loop.index }}
+  - enabled: {{ adguardhome_whitelist_filter.enabled }}
+    url: {{ adguardhome_whitelist_filter.url }}
+    name: {{ adguardhome_whitelist_filter.name }}
+    id: {{ loop.index }}
 {% endfor %}
 {% endif %}
 user_rules:{% if adguardhome_user_rules|length <= 0 %}
@@ -216,7 +217,7 @@ user_rules:{% if adguardhome_user_rules|length <= 0 %}
 {% else %}
 
 {% for address in adguardhome_user_rules %}
-- '{{ address }}'
+  - '{{ address }}'
 {% endfor %}
 {% endif %}
 dhcp:
@@ -235,7 +236,7 @@ dhcp:
 {% else %}
 
 {% for option in adguardhome_dhcp_options %}
-    - {{ option }}
+      - {{ option }}
 {% endfor %}
 {% endif %}
   dhcpv6:
@@ -255,13 +256,13 @@ clients:
 {% else %}
 
 {% for client in adguardhome_clients %}
-  - name: {{ client.name }}
-    tags:{% if client.tags is not defined or client.tags|length <= 0 %}
+    - name: {{ client.name }}
+      tags:{% if client.tags is not defined or client.tags|length <= 0 %}
  []
 {% else %}
 
 {% for tag in client.tags %}
-    - {{ tag }}
+        - {{ tag }}
 {% endfor %}
 {% endif %}
     ids:{% if client.ids is not defined or client.ids|length <= 0 %}
@@ -269,7 +270,7 @@ clients:
 {% else %}
 
 {% for id in client.ids %}
-    - {{ id }}
+      - {{ id }}
 {% endfor %}
 {% endif %}
     blocked_services:{% if client.blocked_services is not defined or client.blocked_services|length <= 0 %}
@@ -277,7 +278,7 @@ clients:
 {% else %}
 
 {% for blocked_service in client.blocked_services %}
-    - {{ blocked_service }}
+      - {{ blocked_service }}
 {% endfor %}
 {% endif %}
     upstreams:{% if client.upstreams is not defined or client.upstreams|length <= 0 %}
@@ -285,7 +286,7 @@ clients:
 {% else %}
 
 {% for upstream in client.upstreams %}
-    - {{ upstream }}
+      - {{ upstream }}
 {% endfor %}
 {% endif %}
     use_global_settings: {{ client.use_global_settings | default('true') }}
