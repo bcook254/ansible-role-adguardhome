@@ -1,7 +1,32 @@
 ---
+# Based on ansible-lint config
 extends: default
 
+ignore: |
+  molecule/
+
 rules:
-  line-length:
-    max: 120
-    level: warning
+  braces:
+    max-spaces-inside: 1
+    level: error
+  brackets:
+    max-spaces-inside: 1
+    level: error
+  colons:
+    max-spaces-after: -1
+    level: error
+  commas:
+    max-spaces-after: -1
+    level: error
+  comments: disable
+  comments-indentation: disable
+  document-start: disable
+  empty-lines:
+    max: 3
+    level: error
+  hyphens:
+    level: error
+  key-duplicates: enable
+  line-length: disable
+  new-lines:
+    type: unix

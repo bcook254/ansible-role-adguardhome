@@ -1,3 +1,7 @@
----
+# .ansible-lint
+
+exclude_paths:
+  - molecule/
+
 skip_list:
-  - 'yaml'
+  - schema[meta]
