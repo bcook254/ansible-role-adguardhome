@@ -18,15 +18,15 @@ galaxy_info:
         - 9
     - name: Fedora
       versions:
-        - 36
         - 37
+        - 38
     - name: Debian
       versions:
         - buster
         - bullseye
+        - bookworm
     - name: Ubuntu
       versions:
-        - bionic
         - focal
         - jammy
   galaxy_tags:
