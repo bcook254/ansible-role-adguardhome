@@ -6,16 +6,4 @@ adguardhome_template_version: >-
   107.24
   {%- elif adguardhome_version is version('0.107.23', '>=') -%}
   107.23
-  {%- elif adguardhome_version is version('0.107.22', '>=') -%}
-  107.22
-  {%- elif adguardhome_version is version('0.107.17', '>=') -%}
-  107.17
-  {%- elif adguardhome_version is version('0.107.15', '>=') -%}
-  107.15
-  {%- elif adguardhome_version is version('0.107.13', '>=') -%}
-  107.13
-  {%- elif adguardhome_version is version('0.107.10', '>=') -%}
-  107.10
-  {%- elif adguardhome_version is version('0.107.7', '>=') -%}
-  107.7
   {%- endif %}
