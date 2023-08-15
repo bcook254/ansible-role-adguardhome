@@ -1,9 +1,0 @@
----
-adguardhome_template_version: >-
-  {% if adguardhome_version is version('0.107.26', '>=') -%}
-  107.26
-  {%- elif adguardhome_version is version('0.107.24', '>=') -%}
-  107.24
-  {%- elif adguardhome_version is version('0.107.23', '>=') -%}
-  107.23
-  {%- endif %}

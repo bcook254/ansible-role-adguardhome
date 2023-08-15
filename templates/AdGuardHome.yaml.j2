@@ -1,5 +1,6 @@
-bind_host: {{ adguardhome_webhost }}
-bind_port: {{ adguardhome_webport }}
+http:
+  address: {{ adguardhome_webhost }}:{{ adguardhome_webport }}
+  session_ttl: {{ adguardhome_web_session_ttl }}
 users:{% if adguardhome_users|length <= 0 %}
  []
 {% else %}
@@ -19,7 +20,6 @@ http_proxy: {{ adguardhome_http_proxy }}
 language: {{ adguardhome_language }}
 theme: {{ adguardhome_theme }}
 debug_pprof: {{ adguardhome_debug_pprof }}
-web_session_ttl: {{ adguardhome_web_session_ttl }}
 dns:
   bind_hosts:{% if adguardhome_dnshosts|length <= 0 %}
  []
@@ -36,6 +36,7 @@ dns:
   blocking_ipv4: {{ adguardhome_blockingipv4 }}
   blocking_ipv6: {{ adguardhome_blockingpiv6 }}
   blocked_response_ttl: {{ adguardhome_blocked_response_ttl }}
+  protection_disabled_until: {{ adguardhome_protection_disabled_until }}
   parental_block_host: {{ adguardhome_parental_block_host }}
   safebrowsing_block_host: {{ adguardhome_safebrowsing_block_host }}
   ratelimit: {{ adguardhome_ratelimit }}
@@ -129,15 +130,23 @@ dns:
 {% endfor %}
 {% endif %}
   ipset_file: {{ adguardhome_ipset_file }}
+  bootstrap_prefer_ipv6: {{ adguardhome_bootstrap_prefer_ipv6 }}
   filtering_enabled: {{ adguardhome_filtering_enabled }}
   filters_update_interval: {{ adguardhome_filters_update_interval }}
   parental_enabled: {{ adguardhome_parental_enabled }}
-  safesearch_enabled: {{ adguardhome_safesearch_enabled }}
   safebrowsing_enabled: {{ adguardhome_safebrowsing_enabled }}
   safebrowsing_cache_size: {{ adguardhome_safebrowsing_cache_size }}
   safesearch_cache_size: {{ adguardhome_safeseach_cache_size }}
   parental_cache_size: {{ adguardhome_parental_cache_size }}
   cache_time: {{ adguardhome_cache_time }}
+  safe_search:
+    enabled: {{ adguardhome_safesearch_enabled }}
+    bing: {{ adguardhome_safesearch.bing }}
+    duckduckgo: {{ adguardhome_safesearch.duckduckgo }}
+    google: {{ adguardhome_safesearch.google }}
+    pixabay: {{ adguardhome_safesearch.pixabay }}
+    yandex: {{ adguardhome_safesearch.yandex }}
+    youtube: {{ adguardhome_safesearch.youtube }}
   rewrites:{% if adguardhome_rewrites|length <= 0 %}
  []
 {% else %}
@@ -147,7 +156,11 @@ dns:
       answer: {{ rewrite.answer }}
 {% endfor %}
 {% endif %}
-  blocked_services:{% if adguardhome_blocked_services|length <= 0 %}
+  blocked_services:
+    schedule:
+      time_zone: {{ adguardhome_blocked_services_time_zone }}
+{# NOT IMPLEMENTED - Blocked services schedule #}
+    ids:{% if adguardhome_blocked_services|length <= 0 %}
  []
 {% else %}
 
@@ -200,15 +213,17 @@ tls:
   private_key_path: {{ adguardhome_tls_private_key_path }}
   strict_sni_check: {{ adguardhome_tls_sctrict_sni_check }}
 querylog:
-  enabled: {{ adguardhome_querylog_enabled }}
-  file_enabled: {{ adguardhome_querylog_file_enabled }}
+{# NOT IMPLEMENTED - Querylog ignored #}
+  ignored: []
   interval: {{ adguardhome_querylog_interval }}
   size_memory: {{ adguardhome_querylog_size_memory }}
-  ignored: []
+  enabled: {{ adguardhome_querylog_enabled }}
+  file_enabled: {{ adguardhome_querylog_file_enabled }}
 statistics:
-  enabled: {{ adguardhome_statistics_enabled }}
-  interval: {{ adguardhome_statistics_interval }}
+{# NOT IMPLEMENTED - Statistics ignored #}
   ignored: []
+  interval: {{ adguardhome_statistics_interval }}
+  enabled: {{ adguardhome_statistics_enabled }}
 filters:{% if adguardhome_filters|length <= 0 %}
  []
 {% else %}
@@ -292,12 +307,16 @@ clients:
       - {{ id }}
 {% endfor %}
 {% endif %}
-    blocked_services:{% if client.blocked_services is not defined or client.blocked_services|length <= 0 %}
+    blocked_services:
+      schedule:
+        time_zone:{{ client.blocked_services_time_zone | default('Local') }}
+      {# NOT IMPLEMENTED - Client blocked services schedule #}
+      ids:{% if client.blocked_services is not defined or client.blocked_services|length <= 0 %}
  []
 {% else %}
 
 {% for blocked_service in client.blocked_services %}
-      - {{ blocked_service }}
+        - {{ blocked_service }}
 {% endfor %}
 {% endif %}
     upstreams:{% if client.upstreams is not defined or client.upstreams|length <= 0 %}
@@ -311,19 +330,19 @@ clients:
     use_global_settings: {{ client.use_global_settings | default('true') }}
     filtering_enabled: {{ client.filtering_enabled | default('false') }}
     parental_enabled: {{ client.parental_enabled | default('false') }}
-    safesearch_enabled: {{ client.safesearch_enabled | default('false') }}
     use_global_blocked_services: {{ client.use_global_blocked_services | default('true') }}
 {% endfor %}
 {% endif %}
-log_file: {{ adguardhome_log_file }}
-log_max_backups: {{ adguardhome_log_max_backups }}
-log_max_size: {{ adguardhome_log_max_size }}
-log_max_age: {{ adguardhome_log_max_age }}
-log_compress: {{ adguardhome_log_compress }}
-log_localtime: {{ adguardhome_log_localtime }}
-verbose: {{ adguardhome_verbose }}
+log:
+  file: {{ adguardhome_log_file }}
+  max_backups: {{ adguardhome_log_max_backups }}
+  max_size: {{ adguardhome_log_max_size }}
+  max_age: {{ adguardhome_log_max_age }}
+  compress: {{ adguardhome_log_compress }}
+  local_time: {{ adguardhome_log_localtime }}
+  verbose: {{ adguardhome_verbose }}
 os:
   group: {{ adguardhome_os_group }}
   user: {{ adguardhome_os_user }}
   rlimit_nofile: {{ adguardhome_rlimit_nofile }}
-schema_version: 17
+schema_version: 24

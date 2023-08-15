@@ -2,7 +2,7 @@
 # Check for changes in config
 - name: Check config file for changes.
   ansible.builtin.template:
-    src: AdGuardHome-{{ adguardhome_template_version }}.yaml.j2
+    src: AdGuardHome.yaml.j2
     dest: "{{ adguardhome_config_dir }}/AdGuardHome.yaml"
     owner: "{{ adguardhome_user }}"
     group: "{{ adguardhome_group }}"
@@ -20,7 +20,7 @@
 # Apply changes only if there are changes
 - name: Copy config file.
   ansible.builtin.template:
-    src: AdGuardHome-{{ adguardhome_template_version }}.yaml.j2
+    src: AdGuardHome.yaml.j2
     dest: "{{ adguardhome_config_dir }}/AdGuardHome.yaml"
     owner: "{{ adguardhome_user }}"
     group: "{{ adguardhome_group }}"

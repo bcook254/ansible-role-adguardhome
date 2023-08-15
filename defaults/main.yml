@@ -1,5 +1,5 @@
 ---
-adguardhome_version: 0.107.26
+adguardhome_version: 0.107.36
 adguardhome_user: adguardhome
 adguardhome_group: adguardhome
 adguardhome_daemon: adguardhome
@@ -18,12 +18,12 @@ adguardhome_block_auth_min: 15
 adguardhome_http_proxy: '""'
 adguardhome_language: '""'
 adguardhome_debug_pprof: 'false'
-adguardhome_web_session_ttl: 720
+adguardhome_web_session_ttl: 720h
 adguardhome_dnshosts:
   - 127.0.0.1
 adguardhome_dnsport: 53
 adguardhome_statistics_enabled: 'true'  # Added in 0.107.24
-adguardhome_statistics_interval: 1
+adguardhome_statistics_interval: 24h
 adguardhome_statistics_ignored: []  # Added in 0.107.24
 adguardhome_querylog_enabled: 'true'
 adguardhome_querylog_file_enabled: 'true'
@@ -75,6 +75,13 @@ adguardhome_filtering_enabled: 'true'
 adguardhome_filters_update_interval: 24
 adguardhome_parental_enabled: 'false'
 adguardhome_safesearch_enabled: 'false'
+adguardhome_safesearch:
+  bing: 'true'
+  duckduckgo: 'true'
+  google: 'true'
+  pixabay: 'true'
+  yandex: 'true'
+  youtube: 'true'
 adguardhome_safebrowsing_enabled: 'false'
 adguardhome_safebrowsing_cache_size: 1048576
 adguardhome_safeseach_cache_size: 1048576
@@ -149,3 +156,6 @@ adguardhome_use_dns64: 'false'  # Added in 0.107.23
 adguardhome_dns64_prefixes: []  # Added in 0.107.23
 adguardhome_edns_client_subnet_custom_ip: '""'  # Added in 0.107.26
 adguardhome_edns_client_subnet_use_custom: 'false'  # Added in 0.107.26
+adguardhome_protection_disabled_until: 'null'
+adguardhome_bootstrap_prefer_ipv6: 'false'
+adguardhome_blocked_services_time_zone: 'UTC'
