@@ -1,3 +1,4 @@
+---
 http:
   address: {{ adguardhome_webhost }}:{{ adguardhome_webport }}
   session_ttl: {{ adguardhome_web_session_ttl }}
@@ -26,7 +27,7 @@ dns:
 {% else %}
 
 {% for adguardhome_dnshost in adguardhome_dnshosts %}
-    - {{ adguardhome_dnshost }}
+    - "{{ adguardhome_dnshost }}"
 {% endfor %}
 {% endif %}
   port: {{ adguardhome_dnsport }}
