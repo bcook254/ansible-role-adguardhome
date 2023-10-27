@@ -1,4 +1,8 @@
 ---
+- name: reload systemd daemon
+  ansible.builtin.systemd:
+    daemon_reload: true
+
 - name: restart adguardhome # noqa name[casing]
   ansible.builtin.service:
     name: "{{ adguardhome_daemon }}"

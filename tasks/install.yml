@@ -4,6 +4,7 @@
     name: "{{ adguardhome_group }}"
     state: present
     system: true
+  when: adguardhome_group != 'root'
 
 - name: Ensure adguardhome user exists.
   ansible.builtin.user:
@@ -12,6 +13,7 @@
     home: "{{ adguardhome_home_dir }}"
     shell: /usr/sbin/nologin
     system: true
+  when: adguardhome_user != 'root'
 
 - name: Check if AdGuardHome is already installed.
   ansible.builtin.command:
@@ -22,7 +24,7 @@
 
 - name: Install AdGuardHome.
   ansible.builtin.unarchive:
-    src: "https://github.com/AdguardTeam/AdGuardHome/releases/download/v{{ adguardhome_version }}/AdGuardHome_linux_amd64.tar.gz"  # yamllint disable-line rule:line-length
+    src: "https://github.com/AdguardTeam/AdGuardHome/releases/download/v{{ adguardhome_version }}/AdGuardHome_linux_{{ _arch_map[ansible_architecture] }}.tar.gz"  # yamllint disable-line rule:line-length
     dest: /usr/local/bin/
     remote_src: true
     include:
@@ -48,3 +50,18 @@
     group: "{{ adguardhome_group }}"
     state: directory
     mode: 0755
+
+- name: Install systemd service
+  ansible.builtin.template:
+    src: systemd.service.j2
+    dest: "/etc/systemd/system/{{ adguardhome_daemon }}.service"
+    mode: "0664"
+  register: adguardhome_systemd_unit
+  notify:
+    - reload systemd daemon
+    - restart adguardhome
+
+- name: Ensure service is enabled
+  ansible.builtin.service:
+    name: "{{ adguardhome_daemon }}"
+    enabled: yes

@@ -1,0 +1,19 @@
+[Unit]
+Description=AdGuard Home
+ConditionFileIsExecutable={{ adguardhome_bin_file }}
+After=syslog.target
+After=network-online.target
+
+[Service]
+Type=simple
+User={{ adguardhome_user }}
+Group={{ adguardhome_group }}
+StartLimitInterval=5
+StartLimitBurst=10
+WorkingDirectory={{ adguardhome_data_dir }}
+ExecStart="{{ adguardhome_bin_file }}" --work-dir "{{ adguardhome_data_dir }}" --config "{{ adguardhome_config_file }}"
+Restart=on-failure
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
