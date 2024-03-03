@@ -6,7 +6,9 @@ adguardhome_daemon: adguardhome
 adguardhome_home_dir: /var/lib/adguardhome
 adguardhome_data_dir: "{{ adguardhome_home_dir }}"
 adguardhome_bin_dir: /usr/local/bin
+adguardhome_bin_file: "{{ adguardhome_bin_dir }}/AdGuardHome"
 adguardhome_config_dir: /etc/adguardhome
+adguardhome_config_file: "{{ adguardhome_config_dir }}/AdGuardHome.yaml"
 
 adguardhome_manage_config: true
 
