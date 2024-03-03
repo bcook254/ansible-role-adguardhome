@@ -161,3 +161,6 @@ adguardhome_edns_client_subnet_use_custom: 'false'  # Added in 0.107.26
 adguardhome_protection_disabled_until: 'null'
 adguardhome_bootstrap_prefer_ipv6: 'false'
 adguardhome_blocked_services_time_zone: 'UTC'
+# List of items to populate systemd's [Unit] After stanzas
+# Useful to managed depencies, for example on VPN daemons
+adguardhome_systemd_unit_after: []

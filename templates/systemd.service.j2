@@ -1,8 +1,14 @@
+# {{ ansible_managed }}
 [Unit]
 Description=AdGuard Home
 ConditionFileIsExecutable={{ adguardhome_bin_file }}
 After=syslog.target
 After=network-online.target
+{% if adguardhome_systemd_unit_after|length > 0 %}
+{% for item in adguardhome_systemd_unit_after %}
+After={{ item }}
+{% endfor %}
+{% endif %}
 
 [Service]
 Type=simple

@@ -2,7 +2,7 @@
 # To pick the correct asset from github
 _arch_map:
   i386: 386
-  x64_64: amd64
+  x86_64: amd64
   aarch32: armv7
   aarch64: arm64
   ppc64le: ppc64le
