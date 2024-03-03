@@ -22,7 +22,7 @@
 
 - name: Install AdGuardHome.
   ansible.builtin.unarchive:
-    src: "https://github.com/AdguardTeam/AdGuardHome/releases/download/v{{ adguardhome_version }}/AdGuardHome_linux_amd64.tar.gz"  # yamllint disable-line rule:line-length
+    src: "{{ adguardhome_download_uri | default(__adguardhome_download_url) }}"
     dest: "{{ adguardhome_bin_dir }}"
     remote_src: true
     include:
