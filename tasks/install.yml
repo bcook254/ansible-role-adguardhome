@@ -15,7 +15,7 @@
 
 - name: Check if AdGuardHome is already installed.
   ansible.builtin.command:
-    cmd: "{{ adguardhome_bin_dir }}/AdGuardHome --version"
+    cmd: "{{ adguardhome_bin_file }} --version"
   register: __adguardhome_version_result
   ignore_errors: true
   changed_when: false
@@ -23,7 +23,7 @@
 - name: Install AdGuardHome.
   ansible.builtin.unarchive:
     src: "https://github.com/AdguardTeam/AdGuardHome/releases/download/v{{ adguardhome_version }}/AdGuardHome_linux_amd64.tar.gz"  # yamllint disable-line rule:line-length
-    dest: /usr/local/bin/
+    dest: "{{ adguardhome_bin_dir }}"
     remote_src: true
     include:
       - ./AdGuardHome/AdGuardHome
