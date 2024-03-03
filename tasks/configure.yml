@@ -3,7 +3,7 @@
 - name: Check config file for changes.
   ansible.builtin.template:
     src: AdGuardHome.yaml.j2
-    dest: "{{ adguardhome_config_dir }}/AdGuardHome.yaml"
+    dest: "{{ adguardhome_config_file }}"
     owner: "{{ adguardhome_user }}"
     group: "{{ adguardhome_group }}"
     mode: 0644
@@ -21,7 +21,7 @@
 - name: Copy config file.
   ansible.builtin.template:
     src: AdGuardHome.yaml.j2
-    dest: "{{ adguardhome_config_dir }}/AdGuardHome.yaml"
+    dest: "{{ adguardhome_config_file }}"
     owner: "{{ adguardhome_user }}"
     group: "{{ adguardhome_group }}"
     mode: 0644
