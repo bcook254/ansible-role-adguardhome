@@ -6,24 +6,9 @@ dependency:
 driver:
   name: podman
 platforms:
-  - name: ubuntu2204
-    image: docker.io/geerlingguy/docker-ubuntu2204-ansible
-    command: ${MOLECULE_DOCKER_COMMAND:-""}
-    tmpfs:
-      - /run
-      - /tmp
-    volumes:
-      - /sys/fs/cgroup:/sys/fs/cgroup:ro
-    capabilities:
-      - SYS_ADMIN
-    cgroupns_mode: host
-    pre_build_image: true
   - name: ubuntu2004
     image: docker.io/geerlingguy/docker-ubuntu2004-ansible
     command: ${MOLECULE_DOCKER_COMMAND:-""}
-    tmpfs:
-      - /run
-      - /tmp
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
     capabilities:
@@ -33,9 +18,6 @@ platforms:
   - name: debian12
     image: docker.io/geerlingguy/docker-debian12-ansible
     command: ${MOLECULE_DOCKER_COMMAND:-""}
-    tmpfs:
-      - /run
-      - /tmp
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
     capabilities:
@@ -45,9 +27,6 @@ platforms:
   - name: debian11
     image: docker.io/geerlingguy/docker-debian11-ansible
     command: ${MOLECULE_DOCKER_COMMAND:-""}
-    tmpfs:
-      - /run
-      - /tmp
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
     capabilities:
@@ -57,9 +36,15 @@ platforms:
   - name: debian10
     image: docker.io/geerlingguy/docker-debian10-ansible
     command: ${MOLECULE_DOCKER_COMMAND:-""}
-    tmpfs:
-      - /run
-      - /tmp
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+    capabilities:
+      - SYS_ADMIN
+    cgroupns_mode: host
+    pre_build_image: true
+  - name: fedora39
+    image: docker.io/geerlingguy/docker-fedora39-ansible
+    command: ${MOLECULE_DOCKER_COMMAND:-""}
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
     capabilities:
@@ -69,21 +54,6 @@ platforms:
   - name: fedora38
     image: docker.io/geerlingguy/docker-fedora38-ansible
     command: ${MOLECULE_DOCKER_COMMAND:-""}
-    tmpfs:
-      - /run
-      - /tmp
-    volumes:
-      - /sys/fs/cgroup:/sys/fs/cgroup:ro
-    capabilities:
-      - SYS_ADMIN
-    cgroupns_mode: host
-    pre_build_image: true
-  - name: fedora37
-    image: docker.io/geerlingguy/docker-fedora37-ansible
-    command: ${MOLECULE_DOCKER_COMMAND:-""}
-    tmpfs:
-      - /run
-      - /tmp
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
     capabilities:
@@ -93,9 +63,6 @@ platforms:
   - name: centosstream9
     image: ghcr.io/bcook254/docker-centosstream9-ansible
     command: ${MOLECULE_DOCKER_COMMAND:-""}
-    tmpfs:
-      - /run
-      - /tmp
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
     capabilities:
@@ -105,9 +72,6 @@ platforms:
   - name: centosstream8
     image: ghcr.io/bcook254/docker-centosstream8-ansible
     command: ${MOLECULE_DOCKER_COMMAND:-""}
-    tmpfs:
-      - /run
-      - /tmp
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
     capabilities:
