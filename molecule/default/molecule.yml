@@ -11,9 +11,8 @@ platforms:
     command: ${MOLECULE_DOCKER_COMMAND:-""}
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
-    capabilities:
-      - SYS_ADMIN
     cgroupns_mode: host
+    privileged: true
     pre_build_image: true
 provisioner:
   name: ansible

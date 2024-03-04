@@ -1,0 +1,58 @@
+---
+name: ci
+'on':
+  pull_request:
+  push:
+    branches:
+      - main
+
+defaults:
+  run:
+    working-directory: 'bcook254.adguardhome'
+
+jobs:
+
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the codebase.
+        uses: actions/checkout@v4
+        with:
+          path: 'bcook254.adguardhome'
+
+      - name: Set up Python 3.
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Install test dependencies.
+        run: python -m pip install yamllint
+
+      - name: Lint code.
+        run: |
+          set -e
+          yamllint .
+
+  molecule:
+    name: Molecule Test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the codebase.
+        uses: actions/checkout@v4
+        with:
+          path: 'bcook254.adguardhome'
+
+      - name: Set up Python 3.
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Install test dependencies.
+        run: python -m pip install ansible molecule molecule-plugins[podman] podman
+
+      - name: Run Molecule tests.
+        run: molecule test --all
+        env:
+          PY_COLORS: '1'
+          ANSIBLE_FORCE_COLOR: '1'

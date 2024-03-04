@@ -6,77 +6,77 @@ dependency:
 driver:
   name: podman
 platforms:
+  - name: ubuntu2204
+    image: docker.io/geerlingguy/docker-ubuntu2204-ansible:latest
+    command: ${MOLECULE_DOCKER_COMMAND:-""}
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+    cgroupns_mode: host
+    privileged: true
+    pre_build_image: true
   - name: ubuntu2004
     image: docker.io/geerlingguy/docker-ubuntu2004-ansible
     command: ${MOLECULE_DOCKER_COMMAND:-""}
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
-    capabilities:
-      - SYS_ADMIN
     cgroupns_mode: host
+    privileged: true
     pre_build_image: true
   - name: debian12
     image: docker.io/geerlingguy/docker-debian12-ansible
     command: ${MOLECULE_DOCKER_COMMAND:-""}
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
-    capabilities:
-      - SYS_ADMIN
     cgroupns_mode: host
+    privileged: true
     pre_build_image: true
   - name: debian11
     image: docker.io/geerlingguy/docker-debian11-ansible
     command: ${MOLECULE_DOCKER_COMMAND:-""}
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
-    capabilities:
-      - SYS_ADMIN
     cgroupns_mode: host
+    privileged: true
     pre_build_image: true
   - name: debian10
     image: docker.io/geerlingguy/docker-debian10-ansible
     command: ${MOLECULE_DOCKER_COMMAND:-""}
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
-    capabilities:
-      - SYS_ADMIN
     cgroupns_mode: host
+    privileged: true
     pre_build_image: true
   - name: fedora39
     image: docker.io/geerlingguy/docker-fedora39-ansible
     command: ${MOLECULE_DOCKER_COMMAND:-""}
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
-    capabilities:
-      - SYS_ADMIN
     cgroupns_mode: host
+    privileged: true
     pre_build_image: true
   - name: fedora38
     image: docker.io/geerlingguy/docker-fedora38-ansible
     command: ${MOLECULE_DOCKER_COMMAND:-""}
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
-    capabilities:
-      - SYS_ADMIN
     cgroupns_mode: host
+    privileged: true
     pre_build_image: true
   - name: centosstream9
     image: ghcr.io/bcook254/docker-centosstream9-ansible
     command: ${MOLECULE_DOCKER_COMMAND:-""}
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
-    capabilities:
-      - SYS_ADMIN
     cgroupns_mode: host
+    privileged: true
     pre_build_image: true
   - name: centosstream8
     image: ghcr.io/bcook254/docker-centosstream8-ansible
     command: ${MOLECULE_DOCKER_COMMAND:-""}
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
-    capabilities:
-      - SYS_ADMIN
     cgroupns_mode: host
+    privileged: true
     pre_build_image: true
 provisioner:
   name: ansible
