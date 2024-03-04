@@ -2,7 +2,7 @@
 
 exclude_paths:
   - molecule/
-  - .github
+  - .github/
 
 skip_list:
   - schema[meta]
