@@ -22,7 +22,7 @@ Permission to:
 
 Role Variables
 --------------
-A non-exhuastive list of available variables is listed below, along with their default vaules. For a list of variables available for the AdguardHome configuration file please see `templates/AdGuardHome-{{ adguardhome_template_version }}.yaml.j2`.
+A non-exhuastive list of available variables is listed below, along with their default vaules. For a list of variables available for the AdguardHome configuration file, please see `defaults/main.yml`.
 
     adguardhome_version: 0.107.36
 
@@ -43,6 +43,15 @@ The name of the service used to control the AdGuardHome process.
     adguardhome_config_dir: /etc/adguardhome
 
 Default folders created for AdguardHome binaries and data.
+
+    adguardhome_bin_file: "{{ adguardhome_bin_dir }}/AdGuardHome"
+    adguardhome_config_file: "{{ adguardhome_config_dir }}/AdGuardHome"
+
+Default file names for the AdguardHome binary and config file.
+
+    adguardhome_download_uri:
+
+Optional URI that will override the default AdGuardHome URL constructed by this role. The URI must point to a tarball that has the same structure as the official AdGuardHome release files. If it is a file location, the file must already exist on the remote machine. This is only necessary for custom/local builds or architectures this role does not yet properly detect.
 
 Dependencies
 ------------
