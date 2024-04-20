@@ -36,25 +36,26 @@ jobs:
     name: Molecule Test
     runs-on: ubuntu-latest
     strategy:
+      fail-fast: false
       matrix:
         platform:
-          - name: "Ubuntu 22.04"
+          - name: ubuntu2204
             image: docker.io/geerlingguy/docker-ubuntu2204-ansible:latest
-          - name: "Ubuntu 20.04"
+          - name: ubuntu2004
             image: docker.io/geerlingguy/docker-ubuntu2004-ansible:latest
-          - name: "Debian 12"
+          - name: debian12
             image: docker.io/geerlingguy/docker-debian12-ansible
-          - name: "Debian 11"
+          - name: debian11
             image: docker.io/geerlingguy/docker-debian11-ansible
-          - name: "Debian 10"
+          - name: debian10
             image: docker.io/geerlingguy/docker-debian10-ansible
-          - name: "Fedora 39"
+          - name: fedora39
             image: docker.io/geerlingguy/docker-fedora39-ansible
-          - name: "Fedora 38"
+          - name: fedora38
             image: docker.io/geerlingguy/docker-fedora38-ansible
-          - name: "CentOS Stream 9"
+          - name: centosstream9
             image: ghcr.io/bcook254/docker-centosstream9-ansible
-          - name: "CentOS Stream 8"
+          - name: centosstream8
             image: ghcr.io/bcook254/docker-centosstream8-ansible
     steps:
       - name: Check out the codebase.
