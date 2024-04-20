@@ -34,6 +34,8 @@ dns:
   port: {{ adguardhome_dnsport }}
   anonymize_client_ip: {{ adguardhome_anonymize_client_ip }}
   ratelimit: {{ adguardhome_ratelimit }}
+  ratelimit_subnet_len_ipv4: {{ adguardhome_ratelimit_subnet_len_ipv4 }}
+  ratelimit_subnet_len_ipv6: {{ adguardhome_ratelimit_subnet_len_ipv6 }}
   ratelimit_whitelist:{% if adguardhome_ratelimit_whitelist|length <= 0 %}
  []
 {% else %}

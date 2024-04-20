@@ -1,5 +1,5 @@
 ---
-adguardhome_version: 0.107.40
+adguardhome_version: 0.107.41
 adguardhome_user: adguardhome
 adguardhome_group: adguardhome
 adguardhome_daemon: adguardhome
@@ -164,3 +164,5 @@ adguardhome_blocked_services_time_zone: 'UTC'
 adguardhome_pprof_port: 6000
 adguardhome_pprof_enabled: 'false'
 adguardhome_fallback_dns: []
+adguardhome_ratelimit_subnet_len_ipv4: 24
+adguardhome_ratelimit_subnet_len_ipv6: 56
