@@ -35,6 +35,28 @@ jobs:
   molecule:
     name: Molecule Test
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        platform:
+          - name: ubuntu2204
+            image: docker.io/geerlingguy/docker-ubuntu2204-ansible:latest
+          - name: ubuntu2004
+            image: docker.io/geerlingguy/docker-ubuntu2004-ansible:latest
+          - name: debian12
+            image: docker.io/geerlingguy/docker-debian12-ansible
+          - name: debian11
+            image: docker.io/geerlingguy/docker-debian11-ansible
+          - name: debian10
+            image: docker.io/geerlingguy/docker-debian10-ansible
+          - name: fedora39
+            image: docker.io/geerlingguy/docker-fedora39-ansible
+          - name: fedora38
+            image: docker.io/geerlingguy/docker-fedora38-ansible
+          - name: centosstream9
+            image: ghcr.io/bcook254/docker-centosstream9-ansible
+          - name: centosstream8
+            image: ghcr.io/bcook254/docker-centosstream8-ansible
     steps:
       - name: Check out the codebase.
         uses: actions/checkout@v4
@@ -50,7 +72,9 @@ jobs:
         run: python -m pip install ansible molecule molecule-plugins[docker] docker
 
       - name: Run Molecule tests.
-        run: molecule test --driver-name docker --scenario-name all
+        run: molecule test --driver-name docker --scenario-name ci
         env:
+          PLATFORM_NAME: ${{ matrix.platform.name }}
+          PLATFORM_IMAGE: ${{ matrix.platform.image }}
           PY_COLORS: '1'
           ANSIBLE_FORCE_COLOR: '1'
