@@ -14,7 +14,7 @@
       chdir: /usr/local/bin
     changed_when: false
     register: __adguardhome_version
-    failed_when: __adguardhome_version is not search('0.107.36')
+    failed_when: __adguardhome_version is not search('0.107.37')
 
   - name: Check if adguardhome.service is started
     ansible.builtin.service:
@@ -23,4 +23,7 @@
       enabled: true
     check_mode: true
     register: service
+    until: service is succeeded
+    retries: 3
+    delay: 5
     failed_when: (service is changed) or (service is failed)

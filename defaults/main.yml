@@ -1,5 +1,5 @@
 ---
-adguardhome_version: 0.107.36
+adguardhome_version: 0.107.37
 adguardhome_user: adguardhome
 adguardhome_group: adguardhome
 adguardhome_daemon: adguardhome
@@ -161,3 +161,6 @@ adguardhome_edns_client_subnet_use_custom: 'false'  # Added in 0.107.26
 adguardhome_protection_disabled_until: 'null'
 adguardhome_bootstrap_prefer_ipv6: 'false'
 adguardhome_blocked_services_time_zone: 'UTC'
+adguardhome_pprof_port: 6000
+adguardhome_pprof_enabled: 'false'
+adguardhome_fallback_dns: []
