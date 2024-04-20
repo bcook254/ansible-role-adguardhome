@@ -1,4 +1,7 @@
 http:
+  pprof:
+    port: {{ adguardhome_pprof_port }}
+    enabled: {{ adguardhome_pprof_enabled }}
   address: {{ adguardhome_webhost }}:{{ adguardhome_webport }}
   session_ttl: {{ adguardhome_web_session_ttl }}
 users:{% if adguardhome_users|length <= 0 %}
@@ -19,7 +22,6 @@ block_auth_min: {{ adguardhome_block_auth_min }}
 http_proxy: {{ adguardhome_http_proxy }}
 language: {{ adguardhome_language }}
 theme: {{ adguardhome_theme }}
-debug_pprof: {{ adguardhome_debug_pprof }}
 dns:
   bind_hosts:{% if adguardhome_dnshosts|length <= 0 %}
  []
@@ -31,14 +33,6 @@ dns:
 {% endif %}
   port: {{ adguardhome_dnsport }}
   anonymize_client_ip: {{ adguardhome_anonymize_client_ip }}
-  protection_enabled: {{ adguardhome_protection_enabled }}
-  blocking_mode: {{ adguardhome_blocking_mode }}
-  blocking_ipv4: {{ adguardhome_blockingipv4 }}
-  blocking_ipv6: {{ adguardhome_blockingpiv6 }}
-  blocked_response_ttl: {{ adguardhome_blocked_response_ttl }}
-  protection_disabled_until: {{ adguardhome_protection_disabled_until }}
-  parental_block_host: {{ adguardhome_parental_block_host }}
-  safebrowsing_block_host: {{ adguardhome_safebrowsing_block_host }}
   ratelimit: {{ adguardhome_ratelimit }}
   ratelimit_whitelist:{% if adguardhome_ratelimit_whitelist|length <= 0 %}
  []
@@ -63,6 +57,14 @@ dns:
 {% else %}
 
 {% for address in adguardhome_bootstrap_dns %}
+    - {{ address }}
+{% endfor %}
+{% endif %}
+  fallback_dns:{% if adguardhome_fallback_dns|length <= 0 %}
+ []
+{% else %}
+
+{% for address in adguardhome_fallback_dns %}
     - {{ address }}
 {% endfor %}
 {% endif %}
@@ -131,43 +133,6 @@ dns:
 {% endif %}
   ipset_file: {{ adguardhome_ipset_file }}
   bootstrap_prefer_ipv6: {{ adguardhome_bootstrap_prefer_ipv6 }}
-  filtering_enabled: {{ adguardhome_filtering_enabled }}
-  filters_update_interval: {{ adguardhome_filters_update_interval }}
-  parental_enabled: {{ adguardhome_parental_enabled }}
-  safebrowsing_enabled: {{ adguardhome_safebrowsing_enabled }}
-  safebrowsing_cache_size: {{ adguardhome_safebrowsing_cache_size }}
-  safesearch_cache_size: {{ adguardhome_safeseach_cache_size }}
-  parental_cache_size: {{ adguardhome_parental_cache_size }}
-  cache_time: {{ adguardhome_cache_time }}
-  safe_search:
-    enabled: {{ adguardhome_safesearch_enabled }}
-    bing: {{ adguardhome_safesearch.bing }}
-    duckduckgo: {{ adguardhome_safesearch.duckduckgo }}
-    google: {{ adguardhome_safesearch.google }}
-    pixabay: {{ adguardhome_safesearch.pixabay }}
-    yandex: {{ adguardhome_safesearch.yandex }}
-    youtube: {{ adguardhome_safesearch.youtube }}
-  rewrites:{% if adguardhome_rewrites|length <= 0 %}
- []
-{% else %}
-
-{% for rewrite in adguardhome_rewrites %}
-    - domain: {{ rewrite.domain }}
-      answer: {{ rewrite.answer }}
-{% endfor %}
-{% endif %}
-  blocked_services:
-    schedule:
-      time_zone: {{ adguardhome_blocked_services_time_zone }}
-{# NOT IMPLEMENTED - Blocked services schedule #}
-    ids:{% if adguardhome_blocked_services|length <= 0 %}
- []
-{% else %}
-
-{% for service in adguardhome_blocked_services %}
-    - {{ service }}
-{% endfor %}
-{% endif %}
   upstream_timeout: {{ adguardhome_upstream_timeout }}
   private_networks:{% if adguardhome_private_networks|length <= 0 %}
  []
@@ -278,6 +243,54 @@ dhcp:
     lease_duration: {{ adguardhome_dhcp6_lease_duration }}
     ra_slaac_only: {{ adguardhome_dhcp6_slaac_only }}
     ra_allow_slaac: {{ adguardhome_dhcp6_allow_slaac }}
+filtering:
+{# NOT IMPLEMENTED #}
+  blocking_ipv4: ""
+  blocking_ipv6: ""
+  blocked_services:
+    schedule:
+      time_zone: {{ adguardhome_blocked_services_time_zone }}
+{# NOT IMPLEMENTED - Blocked services schedule #}
+    ids:{% if adguardhome_blocked_services|length <= 0 %}
+ []
+{% else %}
+
+{% for service in adguardhome_blocked_services %}
+    - {{ service }}
+{% endfor %}
+{% endif %}
+  protection_disabled_until: null
+  safe_search:
+    enabled: {{ adguardhome_safesearch_enabled }}
+    bing: {{ adguardhome_safesearch.bing }}
+    duckduckgo: {{ adguardhome_safesearch.duckduckgo }}
+    google: {{ adguardhome_safesearch.google }}
+    pixabay: {{ adguardhome_safesearch.pixabay }}
+    yandex: {{ adguardhome_safesearch.yandex }}
+    youtube: {{ adguardhome_safesearch.youtube }}
+{# NOT IMPLEMENTED #}
+  blocking_mode: default
+  parental_block_host: ""
+  safebrowsing_block_host: ""
+  rewrites:{% if adguardhome_rewrites|length <= 0 %}
+ []
+{% else %}
+
+{% for rewrite in adguardhome_rewrites %}
+    - domain: {{ rewrite.domain }}
+      answer: {{ rewrite.answer }}
+{% endfor %}
+{% endif %}
+  safebrowsing_cache_size: {{ adguardhome_safebrowsing_cache_size }}
+  safesearch_cache_size: {{ adguardhome_safeseach_cache_size }}
+  parental_cache_size: {{ adguardhome_parental_cache_size }}
+  cache_time: {{ adguardhome_cache_time }}
+  filters_update_interval: {{ adguardhome_filters_update_interval }}
+  blocked_response_ttl: 10
+  filtering_enabled: {{ adguardhome_filtering_enabled }}
+  parental_enabled: {{ adguardhome_parental_enabled }}
+  safebrowsing_enabled: {{ adguardhome_safebrowsing_enabled }}
+  protection_enabled: {{ adguardhome_protection_enabled }}
 clients:
   runtime_sources:
     whois: {{ adguardhome_runtime_sources_whois }}
@@ -345,4 +358,4 @@ os:
   group: {{ adguardhome_os_group }}
   user: {{ adguardhome_os_user }}
   rlimit_nofile: {{ adguardhome_rlimit_nofile }}
-schema_version: 24
+schema_version: 27
