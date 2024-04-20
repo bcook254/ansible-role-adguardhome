@@ -1,5 +1,5 @@
 ---
-adguardhome_version: 0.107.38
+adguardhome_version: 0.107.39
 adguardhome_user: adguardhome
 adguardhome_group: adguardhome
 adguardhome_daemon: adguardhome
