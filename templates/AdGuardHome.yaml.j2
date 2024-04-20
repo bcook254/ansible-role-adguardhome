@@ -270,8 +270,8 @@ filtering:
     youtube: {{ adguardhome_safesearch.youtube }}
 {# NOT IMPLEMENTED #}
   blocking_mode: default
-  parental_block_host: ""
-  safebrowsing_block_host: ""
+  parental_block_host: {{ adguardhome_parental_block_host }}
+  safebrowsing_block_host: {{ adguardhome_safebrowsing_block_host }}
   rewrites:{% if adguardhome_rewrites|length <= 0 %}
  []
 {% else %}
