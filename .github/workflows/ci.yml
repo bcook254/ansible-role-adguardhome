@@ -73,5 +73,7 @@ jobs:
       - name: Run Molecule tests.
         run: molecule test --driver-name docker --scenario-name ci
         env:
+          PLATFORM_NAME: ${{ matrix.platform.name }}
+          PLATFORM_IMAGE: ${{ matrix.platform.image }}
           PY_COLORS: '1'
           ANSIBLE_FORCE_COLOR: '1'
