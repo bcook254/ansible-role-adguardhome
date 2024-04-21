@@ -164,6 +164,7 @@ dns:
   serve_http3: {{ adguardhome_serve_http3 }}
   use_http3_upstreams: {{ adguardhome_use_http3_upstreams }}
   serve_plain_dns: {{ adguardhome_serve_plain_dns }}
+  hostsfile_enabled: {{ adguardhome_hostsfile_enabled }}
 tls:
   enabled: {{ adguardhome_tls_enabled }}
   server_name: {{ adguardhome_tls_server_name }}
@@ -180,6 +181,7 @@ tls:
   private_key_path: {{ adguardhome_tls_private_key_path }}
   strict_sni_check: {{ adguardhome_tls_sctrict_sni_check }}
 querylog:
+  dir_path: {{ adguardhome_querylog_dir_path }}
 {# NOT IMPLEMENTED - Querylog ignored #}
   ignored: []
   interval: {{ adguardhome_querylog_interval }}
@@ -187,6 +189,7 @@ querylog:
   enabled: {{ adguardhome_querylog_enabled }}
   file_enabled: {{ adguardhome_querylog_file_enabled }}
 statistics:
+  dir_path: {{ adguardhome_statistics_dir_log }}
 {# NOT IMPLEMENTED - Statistics ignored #}
   ignored: []
   interval: {{ adguardhome_statistics_interval }}

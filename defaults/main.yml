@@ -1,5 +1,5 @@
 ---
-adguardhome_version: 0.107.45
+adguardhome_version: 0.107.46
 adguardhome_user: adguardhome
 adguardhome_group: adguardhome
 adguardhome_daemon: adguardhome
@@ -166,3 +166,6 @@ adguardhome_ratelimit_subnet_len_ipv4: 24
 adguardhome_ratelimit_subnet_len_ipv6: 56
 adguardhome_serve_plain_dns: 'true'
 adguardhome_upstream_mode: 'load_balance'
+adguardhome_hostsfile_enabled: 'true'
+adguardhome_querylog_dir_path: '""'
+adguardhome_statistics_dir_log: '""'
