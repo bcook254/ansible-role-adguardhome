@@ -70,8 +70,7 @@ dns:
     - {{ address }}
 {% endfor %}
 {% endif %}
-  all_servers: {{ adguardhome_all_servers }}
-  fastest_addr: {{ adguardhome_fastest_addr }}
+  upstream_mode: {{ adguardhome_upstream_mode }}
   fastest_timeout: {{ adguardhome_fastest_timeout }}
   allowed_clients:{% if adguardhome_allowed_clients|length <= 0 %}
  []
@@ -361,4 +360,4 @@ os:
   group: {{ adguardhome_os_group }}
   user: {{ adguardhome_os_user }}
   rlimit_nofile: {{ adguardhome_rlimit_nofile }}
-schema_version: 27
+schema_version: 28
