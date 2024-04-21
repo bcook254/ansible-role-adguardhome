@@ -1,5 +1,5 @@
 ---
-adguardhome_version: 0.107.41
+adguardhome_version: 0.107.42
 adguardhome_user: adguardhome
 adguardhome_group: adguardhome
 adguardhome_daemon: adguardhome
@@ -166,3 +166,4 @@ adguardhome_pprof_enabled: 'false'
 adguardhome_fallback_dns: []
 adguardhome_ratelimit_subnet_len_ipv4: 24
 adguardhome_ratelimit_subnet_len_ipv6: 56
+adguardhome_serve_plain_dns: 'true'
