@@ -18,8 +18,9 @@ galaxy_info:
         - 9
     - name: Fedora
       versions:
-        - 37
         - 38
+        - 39
+        - 40
     - name: Debian
       versions:
         - buster
@@ -29,6 +30,7 @@ galaxy_info:
       versions:
         - focal
         - jammy
+        - noble
   galaxy_tags:
     - adguard
     - adguardhome

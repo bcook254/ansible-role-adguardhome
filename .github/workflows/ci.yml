@@ -39,24 +39,28 @@ jobs:
       fail-fast: false
       matrix:
         platform:
+          - name: ubuntu2404
+            image: docker.io/geerlingguy/docker-ubuntu2404-ansible:latest
           - name: ubuntu2204
             image: docker.io/geerlingguy/docker-ubuntu2204-ansible:latest
           - name: ubuntu2004
             image: docker.io/geerlingguy/docker-ubuntu2004-ansible:latest
           - name: debian12
-            image: docker.io/geerlingguy/docker-debian12-ansible
+            image: docker.io/geerlingguy/docker-debian12-ansible:latest
           - name: debian11
-            image: docker.io/geerlingguy/docker-debian11-ansible
+            image: docker.io/geerlingguy/docker-debian11-ansible:latest
           - name: debian10
-            image: docker.io/geerlingguy/docker-debian10-ansible
+            image: docker.io/geerlingguy/docker-debian10-ansible:latest
+          - name: fedora40
+            image: docker.io/geerlingguy/docker-fedora40-ansible:latest
           - name: fedora39
-            image: docker.io/geerlingguy/docker-fedora39-ansible
+            image: docker.io/geerlingguy/docker-fedora39-ansible:latest
           - name: fedora38
-            image: docker.io/geerlingguy/docker-fedora38-ansible
+            image: docker.io/geerlingguy/docker-fedora38-ansible:latest
           - name: centosstream9
-            image: ghcr.io/bcook254/docker-centosstream9-ansible
+            image: ghcr.io/bcook254/docker-centosstream9-ansible:latest
           - name: centosstream8
-            image: ghcr.io/bcook254/docker-centosstream8-ansible
+            image: ghcr.io/bcook254/docker-centosstream8-ansible:latest
     steps:
       - name: Check out the codebase.
         uses: actions/checkout@v4
