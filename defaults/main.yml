@@ -19,7 +19,6 @@ adguardhome_auth_attempts: 5
 adguardhome_block_auth_min: 15
 adguardhome_http_proxy: '""'
 adguardhome_language: '""'
-adguardhome_debug_pprof: 'false'
 adguardhome_web_session_ttl: 720h
 adguardhome_dnshosts:
   - 127.0.0.1
@@ -91,7 +90,6 @@ adguardhome_rewrites: []
 adguardhome_blocked_services: []
 adguardhome_upstream_timeout: '10s'
 adguardhome_local_domain_name: 'lan'
-adguardhome_resolve_clients: 'true'
 adguardhome_use_private_ptr_resolvers: 'true'
 adguardhome_local_ptr_upstreams: []
 adguardhome_tls_enabled: 'false'
@@ -133,7 +131,7 @@ adguardhome_dhcp6_allow_slaac: 'false'
 adguardhome_clients: []
 adguardhome_runtime_sources_whois: 'true'
 adguardhome_runtime_sources_arp: 'true'
-adguardhome_runtime_sources_rdns: 'true'
+adguardhome_runtime_sources_rdns: "{{ adguardhome_resolve_clients | default('true') }}"
 adguardhome_runtime_sources_dhcp: 'true'
 adguardhome_runtime_sources_hosts: 'true'
 adguardhome_log_compress: 'false'
@@ -160,7 +158,7 @@ adguardhome_protection_disabled_until: 'null'
 adguardhome_bootstrap_prefer_ipv6: 'false'
 adguardhome_blocked_services_time_zone: 'UTC'
 adguardhome_pprof_port: 6000
-adguardhome_pprof_enabled: 'false'
+adguardhome_pprof_enabled: "{{ adguardhome_debug_pprof | default('false') }}"
 adguardhome_fallback_dns: []
 adguardhome_ratelimit_subnet_len_ipv4: 24
 adguardhome_ratelimit_subnet_len_ipv6: 56
