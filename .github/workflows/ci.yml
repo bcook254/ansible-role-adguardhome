@@ -6,10 +6,6 @@ name: ci
     branches:
       - main
 
-defaults:
-  run:
-    working-directory: 'bcook254.adguardhome'
-
 jobs:
 
   lint:
@@ -18,8 +14,6 @@ jobs:
     steps:
       - name: Check out the codebase.
         uses: actions/checkout@v4
-        with:
-          path: 'bcook254.adguardhome'
 
       - name: Install test dependencies.
         run: python -m pip install yamllint
@@ -59,8 +53,6 @@ jobs:
     steps:
       - name: Check out the codebase.
         uses: actions/checkout@v4
-        with:
-          path: 'bcook254.adguardhome'
 
       - name: Install test dependencies.
         run: python -m pip install molecule molecule-plugins[docker]
