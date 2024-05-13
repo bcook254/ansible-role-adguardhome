@@ -63,10 +63,10 @@ jobs:
           path: 'bcook254.adguardhome'
 
       - name: Install test dependencies.
-        run: python -m pip install molecule molecule-plugins[podman]
+        run: python -m pip install molecule molecule-plugins[docker]
 
       - name: Run Molecule tests.
-        run: molecule test
+        run: molecule test --driver-name docker
         env:
           PLATFORM_NAME: ${{ matrix.platform.name }}
           PLATFORM_IMAGE: ${{ matrix.platform.image }}
