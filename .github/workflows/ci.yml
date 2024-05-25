@@ -44,12 +44,8 @@ jobs:
             image: docker.io/geerlingguy/docker-fedora40-ansible:latest
           - name: fedora39
             image: docker.io/geerlingguy/docker-fedora39-ansible:latest
-          - name: fedora38
-            image: docker.io/geerlingguy/docker-fedora38-ansible:latest
           - name: centosstream9
             image: ghcr.io/bcook254/docker-centosstream9-ansible:latest
-          - name: centosstream8
-            image: ghcr.io/bcook254/docker-centosstream8-ansible:latest
     steps:
       - name: Check out the codebase.
         uses: actions/checkout@v4
