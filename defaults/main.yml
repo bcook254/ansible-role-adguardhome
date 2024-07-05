@@ -1,5 +1,5 @@
 ---
-adguardhome_version: 0.107.51
+adguardhome_version: 0.107.52
 adguardhome_user: adguardhome
 adguardhome_group: adguardhome
 adguardhome_daemon: adguardhome
@@ -139,6 +139,7 @@ adguardhome_log_localtime: 'false'
 adguardhome_log_max_backups: 0
 adguardhome_log_max_size: 100
 adguardhome_log_max_age: 3
+adguardhome_log_enabled: 'true'
 adguardhome_log_file: '""'
 adguardhome_verbose: 'false'
 adguardhome_os_group: '""'

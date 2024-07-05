@@ -352,6 +352,7 @@ clients:
 {% endfor %}
 {% endif %}
 log:
+  enabled: {{ adguardhome_log_enabled }}
   file: {{ adguardhome_log_file }}
   max_backups: {{ adguardhome_log_max_backups }}
   max_size: {{ adguardhome_log_max_size }}
