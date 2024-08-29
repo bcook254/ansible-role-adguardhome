@@ -38,8 +38,6 @@ jobs:
             image: docker.io/geerlingguy/docker-debian12-ansible:latest
           - name: debian11
             image: docker.io/geerlingguy/docker-debian11-ansible:latest
-          - name: debian10
-            image: docker.io/geerlingguy/docker-debian10-ansible:latest
           - name: fedora40
             image: docker.io/geerlingguy/docker-fedora40-ansible:latest
           - name: fedora39
