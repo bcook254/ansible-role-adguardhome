@@ -269,6 +269,7 @@ filtering:
     enabled: {{ adguardhome_safesearch_enabled }}
     bing: {{ adguardhome_safesearch.bing }}
     duckduckgo: {{ adguardhome_safesearch.duckduckgo }}
+    ecosia: {{ adguardhome_safesearch.ecosia }}
     google: {{ adguardhome_safesearch.google }}
     pixabay: {{ adguardhome_safesearch.pixabay }}
     yandex: {{ adguardhome_safesearch.yandex }}
@@ -284,6 +285,14 @@ filtering:
 {% for rewrite in adguardhome_rewrites %}
     - domain: {{ rewrite.domain }}
       answer: {{ rewrite.answer }}
+{% endfor %}
+{% endif %}
+  safe_fs_patterns:{% if adguardhome_safe_fs_patterns|length <= 0 %}
+ []
+{% else %}
+
+{% for safe_fs_pattern in adguardhome_safe_fs_patterns %}
+    - {{ safe_fs_pattern }}
 {% endfor %}
 {% endif %}
   safebrowsing_cache_size: {{ adguardhome_safebrowsing_cache_size }}
@@ -364,4 +373,4 @@ os:
   group: {{ adguardhome_os_group }}
   user: {{ adguardhome_os_user }}
   rlimit_nofile: {{ adguardhome_rlimit_nofile }}
-schema_version: 28
+schema_version: 29
