@@ -6,7 +6,7 @@
     dest: "{{ adguardhome_config_file }}"
     owner: "{{ adguardhome_user }}"
     group: "{{ adguardhome_group }}"
-    mode: 0644
+    mode: 0600
   check_mode: true
   register: __config_file_changes
 
@@ -24,7 +24,7 @@
     dest: "{{ adguardhome_config_file }}"
     owner: "{{ adguardhome_user }}"
     group: "{{ adguardhome_group }}"
-    mode: 0644
+    mode: 0600
     backup: true
   when: __config_file_changes is changed  # noqa: no-handler
   notify: restart adguardhome
