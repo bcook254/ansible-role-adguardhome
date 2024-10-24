@@ -1,5 +1,5 @@
 ---
-adguardhome_version: 0.107.52
+adguardhome_version: 0.107.53
 adguardhome_user: adguardhome
 adguardhome_group: adguardhome
 adguardhome_daemon: adguardhome
@@ -77,6 +77,7 @@ adguardhome_safesearch_enabled: 'false'
 adguardhome_safesearch:
   bing: 'true'
   duckduckgo: 'true'
+  ecosia: 'true'
   google: 'true'
   pixabay: 'true'
   yandex: 'true'
@@ -168,3 +169,5 @@ adguardhome_upstream_mode: 'load_balance'
 adguardhome_hostsfile_enabled: 'true'
 adguardhome_querylog_dir_path: '""'
 adguardhome_statistics_dir_log: '""'
+adguardhome_safe_fs_patterns:
+  - /AdGuardHome/userfilters/*
