@@ -19,6 +19,18 @@ jobs:
         with:
           path: 'bcook254.adguardhome'
 
+      - name: Get tags.
+        id: tags
+        run: |
+          git fetch -a
+          echo "PREVIOUS=$(git describe --tags --abbrev=0 ${{ github.ref }}^)" >> $GITHUB_OUTPUT
+      
+      - name: Create release.
+        uses: softprops/action-gh-release@v2
+        with:
+          body: |
+            **Full Changelog**: https://github.com/${{ github.repository }}/compare/${{ steps.tags.outputs.PREVIOUS }}...${{ github.ref_name }}
+
       - name: Trigger a new import on Galaxy.
         run: >-
           ansible-galaxy role import --api-key ${{ secrets.GALAXY_API_KEY }}
