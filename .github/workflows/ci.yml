@@ -38,10 +38,12 @@ jobs:
             image: docker.io/geerlingguy/docker-debian12-ansible:latest
           - name: debian11
             image: docker.io/geerlingguy/docker-debian11-ansible:latest
+          - name: fedora41
+            image: docker.io/geerlingguy/docker-fedora41-ansible:latest
           - name: fedora40
             image: docker.io/geerlingguy/docker-fedora40-ansible:latest
-          - name: fedora39
-            image: docker.io/geerlingguy/docker-fedora39-ansible:latest
+          - name: centosstream10
+            image: ghcr.io/bcook254/docker-centosstream10-ansible:latest
           - name: centosstream9
             image: ghcr.io/bcook254/docker-centosstream9-ansible:latest
     steps:
