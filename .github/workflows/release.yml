@@ -13,6 +13,8 @@ jobs:
   release:
     name: Release
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - name: Check out the codebase.
         uses: actions/checkout@v3
@@ -21,9 +23,11 @@ jobs:
 
       - name: Get tags.
         id: tags
+        shell: bash
         run: |
-          git fetch -a
-          echo "PREVIOUS=$(git describe --tags --abbrev=0 ${{ github.ref }}^)" >> $GITHUB_OUTPUT
+          git fetch --tags origin
+          previous="$(git tag -l | sort -V --reverse | sed -n 2p)"
+          echo "PREVIOUS=$previous" >> $GITHUB_OUTPUT
       
       - name: Create release.
         uses: softprops/action-gh-release@v2
