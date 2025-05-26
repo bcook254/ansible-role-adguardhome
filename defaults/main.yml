@@ -1,5 +1,5 @@
 ---
-adguardhome_version: 0.107.60
+adguardhome_version: 0.107.61
 adguardhome_user: adguardhome
 adguardhome_group: adguardhome
 adguardhome_daemon: adguardhome
@@ -171,3 +171,4 @@ adguardhome_querylog_dir_path: '""'
 adguardhome_statistics_dir_log: '""'
 adguardhome_safe_fs_patterns:
   - /AdGuardHome/userfilters/*
+adguardhome_pending_requests_enabled: 'true'

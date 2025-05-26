@@ -5,13 +5,13 @@ Installs AdGuardHome on Linux machines.
 
 Versioning Policy
 -----------------
-Each minor version of this role is designed to be compatible with the corresponding patch release of `AdGuardHome`. For example, version `107.60.x` is compatible with `AdGuardHome` version `0.107.60`. This is due to breaking changes introduced in the settings file and allows for bug fix releases in the role between updates.
+Each minor version of this role is designed to be compatible with the corresponding patch release of `AdGuardHome`. For example, version `107.61.x` is compatible with `AdGuardHome` version `0.107.61`. This is due to breaking changes introduced in the settings file and allows for bug fix releases in the role between updates.
 
 Install
 -------
 Using ansible galaxy
 
-`ansible-galaxy install bcook254.adguardhome>=107.60,<107.61`
+`ansible-galaxy install bcook254.adguardhome>=107.61,<107.62`
 
 Requirements
 ------------
@@ -24,7 +24,7 @@ Role Variables
 --------------
 A non-exhuastive list of available variables is listed below, along with their default vaules. For a list of variables available for the AdguardHome configuration file, please see `defaults/main.yml`.
 
-    adguardhome_version: 0.107.60
+    adguardhome_version: 0.107.61
 
 The version of AdGuardHome to be installed.
 
