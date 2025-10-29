@@ -18,15 +18,15 @@ galaxy_info:
         - 10
     - name: Fedora
       versions:
-        - 40
         - 41
+        - 42
     - name: Debian
       versions:
         - bullseye
         - bookworm
+        - trixie
     - name: Ubuntu
       versions:
-        - focal
         - jammy
         - noble
   galaxy_tags:
