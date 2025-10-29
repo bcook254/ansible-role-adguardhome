@@ -40,7 +40,7 @@ dns:
  []
 {% else %}
 
-{% for address in ratelimit_whitelist %}
+{% for address in adguardhome_ratelimit_whitelist %}
     - {{ address }}
 {% endfor %}
 {% endif %}
