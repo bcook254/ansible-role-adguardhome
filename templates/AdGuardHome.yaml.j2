@@ -104,9 +104,10 @@ dns:
     - {{ address }}
 {% endfor %}
 {% endif %}
-  cache_size: {{ adguardhome_cache_size}}
-  cache_ttl_min: {{ adguardhome_cache_ttl_min}}
-  cache_ttl_max: {{ adguardhome_cache_ttl_max}}
+  cache_enabled: {{ adguardhome_cache_enabled }}
+  cache_size: {{ adguardhome_cache_size }}
+  cache_ttl_min: {{ adguardhome_cache_ttl_min }}
+  cache_ttl_max: {{ adguardhome_cache_ttl_max }}
   cache_optimistic: {{ adguardhome_cache_optimistic }}
   bogus_nxdomain:{% if adguardhome_bogus_nxdomain|length <= 0 %}
  []
@@ -375,4 +376,4 @@ os:
   group: {{ adguardhome_os_group }}
   user: {{ adguardhome_os_user }}
   rlimit_nofile: {{ adguardhome_rlimit_nofile }}
-schema_version: 29
+schema_version: 30
