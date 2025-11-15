@@ -331,38 +331,38 @@ clients:
         - {{ tag }}
 {% endfor %}
 {% endif %}
-    ids:{% if client.ids is not defined or client.ids|length <= 0 %}
+      ids:{% if client.ids is not defined or client.ids|length <= 0 %}
  []
 {% else %}
 
 {% for id in client.ids %}
-      - {{ id }}
+        - {{ id }}
 {% endfor %}
 {% endif %}
-    blocked_services:
-      schedule:
-        time_zone:{{ client.blocked_services_time_zone | default('Local') }}
-      {# NOT IMPLEMENTED - Client blocked services schedule #}
-      ids:{% if client.blocked_services is not defined or client.blocked_services|length <= 0 %}
+      blocked_services:
+        schedule:
+          time_zone: {{ client.blocked_services_time_zone | default('Local') }}
+{# NOT IMPLEMENTED - Client blocked services schedule #}
+        ids:{% if client.blocked_services is not defined or client.blocked_services.ids is not defined or client.blocked_services.ids|length <= 0 %}
  []
 {% else %}
 
-{% for blocked_service in client.blocked_services %}
-        - {{ blocked_service }}
+{% for blocked_service in client.blocked_services.ids %}
+          - {{ blocked_service }}
 {% endfor %}
 {% endif %}
-    upstreams:{% if client.upstreams is not defined or client.upstreams|length <= 0 %}
+      upstreams:{% if client.upstreams is not defined or client.upstreams|length <= 0 %}
  []
 {% else %}
 
 {% for upstream in client.upstreams %}
-      - {{ upstream }}
+        - {{ upstream }}
 {% endfor %}
 {% endif %}
-    use_global_settings: {{ client.use_global_settings | default('true') }}
-    filtering_enabled: {{ client.filtering_enabled | default('false') }}
-    parental_enabled: {{ client.parental_enabled | default('false') }}
-    use_global_blocked_services: {{ client.use_global_blocked_services | default('true') }}
+      use_global_settings: {{ client.use_global_settings | default('true') }}
+      filtering_enabled: {{ client.filtering_enabled | default('false') }}
+      parental_enabled: {{ client.parental_enabled | default('false') }}
+      use_global_blocked_services: {{ client.use_global_blocked_services | default('true') }}
 {% endfor %}
 {% endif %}
 log:
