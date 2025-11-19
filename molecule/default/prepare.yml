@@ -2,6 +2,22 @@
 - name: Prepare
   hosts: all
 
+  pre_tasks:
+    # Workaround to prevent "sudo: PAM account management error" because of non-readable shadows file on CentOS
+    - name: "Get file stats for /etc/shadow"
+      ansible.builtin.stat:
+        path: "/etc/shadow"
+      register: shadow        
+      when: ansible_facts['distribution'] == "CentOS" 
+
+    - name: "Fix permissions for /etc/shadow"
+      ansible.builtin.file:
+        path: "/etc/shadow"
+        owner: root
+        group: "{{ shadow.stat.gr_name }}"
+        mode: 0640
+      when: ansible_facts['distribution'] == "CentOS" and not shadow.stat.rusr
+
   roles:
     - name: 0x0i.systemd
       vars:
