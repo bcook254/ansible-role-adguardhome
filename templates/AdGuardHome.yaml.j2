@@ -109,6 +109,8 @@ dns:
   cache_ttl_min: {{ adguardhome_cache_ttl_min }}
   cache_ttl_max: {{ adguardhome_cache_ttl_max }}
   cache_optimistic: {{ adguardhome_cache_optimistic }}
+  cache_optimistic_answer_ttl: {{ adguardhome_cache_optimistic_answer_ttl }}
+  cache_optimistic_max_age: {{ adguardhome_cache_optimistic_max_age }}
   bogus_nxdomain:{% if adguardhome_bogus_nxdomain|length <= 0 %}
  []
 {% else %}
@@ -378,4 +380,4 @@ os:
   group: {{ adguardhome_os_group }}
   user: {{ adguardhome_os_user }}
   rlimit_nofile: {{ adguardhome_rlimit_nofile }}
-schema_version: 31
+schema_version: 32
