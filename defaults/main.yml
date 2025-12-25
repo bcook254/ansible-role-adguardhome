@@ -1,5 +1,5 @@
 ---
-adguardhome_version: 0.107.70
+adguardhome_version: 0.107.71
 adguardhome_user: adguardhome
 adguardhome_group: adguardhome
 adguardhome_daemon: adguardhome
@@ -174,3 +174,5 @@ adguardhome_safe_fs_patterns:
 adguardhome_pending_requests_enabled: 'true'
 adguardhome_cache_enabled: 'true'
 adguardhome_rewrites_enabled: 'true'
+adguardhome_cache_optimistic_answer_ttl: 30s
+adguardhome_cache_optimistic_max_age: 12h
