@@ -192,6 +192,7 @@ querylog:
   interval: {{ adguardhome_querylog_interval }}
   size_memory: {{ adguardhome_querylog_size_memory }}
   enabled: {{ adguardhome_querylog_enabled }}
+  ignored_enabled: {{ adguardhome_querylog_ignored_enabled }}
   file_enabled: {{ adguardhome_querylog_file_enabled }}
 statistics:
   dir_path: {{ adguardhome_statistics_dir_log }}
@@ -199,6 +200,7 @@ statistics:
   ignored: []
   interval: {{ adguardhome_statistics_interval }}
   enabled: {{ adguardhome_statistics_enabled }}
+  ignored_enabled: {{ adguardhome_statistics_ignored_enabled }}
 filters:{% if adguardhome_filters|length <= 0 %}
  []
 {% else %}
@@ -380,4 +382,4 @@ os:
   group: {{ adguardhome_os_group }}
   user: {{ adguardhome_os_user }}
   rlimit_nofile: {{ adguardhome_rlimit_nofile }}
-schema_version: 32
+schema_version: 33

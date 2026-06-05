@@ -1,5 +1,5 @@
 ---
-adguardhome_version: 0.107.71
+adguardhome_version: 0.107.72
 adguardhome_user: adguardhome
 adguardhome_group: adguardhome
 adguardhome_daemon: adguardhome
@@ -176,3 +176,5 @@ adguardhome_cache_enabled: 'true'
 adguardhome_rewrites_enabled: 'true'
 adguardhome_cache_optimistic_answer_ttl: 30s
 adguardhome_cache_optimistic_max_age: 12h
+adguardhome_querylog_ignored_enabled: 'true'
+adguardhome_statistics_ignored_enabled: 'true'
