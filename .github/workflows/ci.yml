@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out the codebase.
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Install test dependencies.
         run: python -m pip install yamllint
@@ -48,7 +48,7 @@ jobs:
             image: ghcr.io/bcook254/docker-centosstream9-ansible:latest
     steps:
       - name: Check out the codebase.
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Install test dependencies.
         run: python -m pip install molecule molecule-plugins[docker]
