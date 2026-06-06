@@ -17,7 +17,7 @@ jobs:
       contents: write
     steps:
       - name: Check out the codebase.
-        uses: actions/checkout@v3
+        uses: actions/checkout@v6
         with:
           path: 'bcook254.adguardhome'
 
