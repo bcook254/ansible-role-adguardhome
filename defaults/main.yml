@@ -1,5 +1,5 @@
 ---
-adguardhome_version: 0.107.74
+adguardhome_version: 0.107.75
 adguardhome_user: adguardhome
 adguardhome_group: adguardhome
 adguardhome_daemon: adguardhome
@@ -66,7 +66,7 @@ adguardhome_cache_ttl_max: 0
 adguardhome_cache_optimistic: 'false'
 adguardhome_bogus_nxdomain: []
 adguardhome_aaaa_disabled: 'false'
-adguardhome_enable_dnssec: 'false'
+adguardhome_enable_dnssec: 'true'
 adguardhome_edns_client_subnet: 'false'
 adguardhome_max_goroutines: 300
 adguardhome_ipset: []
