@@ -1,5 +1,5 @@
 ---
-adguardhome_version: 0.107.75
+adguardhome_version: 0.107.76
 adguardhome_user: adguardhome
 adguardhome_group: adguardhome
 adguardhome_daemon: adguardhome
@@ -19,16 +19,16 @@ adguardhome_auth_attempts: 5
 adguardhome_block_auth_min: 15
 adguardhome_http_proxy: '""'
 adguardhome_language: '""'
-adguardhome_web_session_ttl: 720h
+adguardhome_web_session_ttl: 30d
 adguardhome_dnshosts:
   - 127.0.0.1
 adguardhome_dnsport: 53
 adguardhome_statistics_enabled: 'true'  # Added in 0.107.24
-adguardhome_statistics_interval: 24h
+adguardhome_statistics_interval: 1d
 adguardhome_statistics_ignored: []  # Added in 0.107.24
 adguardhome_querylog_enabled: 'true'
 adguardhome_querylog_file_enabled: 'true'
-adguardhome_querylog_interval: '2160h'
+adguardhome_querylog_interval: 90d
 adguardhome_querylog_size_memory: 1000
 adguardhome_querylog_ignored: []  # Added in 0.107.24
 adguardhome_anonymize_client_ip: 'false'
