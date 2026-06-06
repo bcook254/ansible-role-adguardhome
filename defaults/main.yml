@@ -1,5 +1,5 @@
 ---
-adguardhome_version: 0.107.73
+adguardhome_version: 0.107.74
 adguardhome_user: adguardhome
 adguardhome_group: adguardhome
 adguardhome_daemon: adguardhome
@@ -101,7 +101,6 @@ adguardhome_tls_port_dns_over_tls: 853
 adguardhome_tls_port_dns_over_quic: 853
 adguardhome_tls_port_dnscrypt: 0
 adguardhome_tls_dnscrypt_config_file: '""'
-adguardhome_tls_allow_enencrypted_doh: 'false'
 adguardhome_tls_sctrict_sni_check: 'false'
 adguardhome_tls_certificate_chain: '""'
 adguardhome_tls_private_key: '""'
@@ -178,3 +177,9 @@ adguardhome_cache_optimistic_answer_ttl: 30s
 adguardhome_cache_optimistic_max_age: 12h
 adguardhome_querylog_ignored_enabled: 'true'
 adguardhome_statistics_ignored_enabled: 'true'
+adguardhome_doh_routes:
+  - GET /dns-query
+  - POST /dns-query
+  - GET /dns-query/{ClientID}
+  - POST /dns-query/{ClientID}
+adguardhome_doh_insecure_enabled: "{{ adguardhome_tls_allow_unencrypted_doh | default('false') }}"
